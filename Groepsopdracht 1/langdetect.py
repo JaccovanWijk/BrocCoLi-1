@@ -19,7 +19,7 @@ def trigram_table(string, limit):
             else:
                 tokens[gram] += 1
 
-    return dict(sorted(tokens.iteritems(), key=operator.itemgetter(1), reverse=True)[:limit])
+    return dict(sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit])
 
 def read_table():
     """Read table:)"""
