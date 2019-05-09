@@ -1,5 +1,4 @@
 from langdetect import *
-<<<<<<< HEAD
 import os
 
 class LangMatcher:
@@ -33,7 +32,5 @@ class LangMatcher:
             return self.score(file.read(), ngrams=ngrams)
 
 app = LangMatcher("./trigram-models")
-print(app.recognize("./training/Bambara-UTF8"))
-=======
+print(app.recognize("austem-emma"))
 
->>>>>>> 1dfae15f6c10e6f2735e500336e499687a364024
