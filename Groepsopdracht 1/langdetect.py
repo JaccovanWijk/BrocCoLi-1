@@ -1,5 +1,6 @@
 import re
 import operator
+import math
 
 def trigram_table(string, limit=0):
     """Calculate trigram frequency table  from string and return it"""
@@ -41,7 +42,12 @@ def write_trigrams(table, filename):
 
 def cosine_similarity(table1, table2):
     """Return cosine between two frequency tables"""
-    
+    dotproduct = 0
+    for key in table1.keys():
+        if key in table2.keys():
+            dotproduct += table1[key] * table2[key]
+    magnitudes = math.sqrt(sum([x*x for x in table1])) * math.sqrt(sum([x*x for x in table2]))
+    return dotproduct / magnitudes
 
 def prepare(string):
     string = re.sub(r"[!? .,\"<>()]"," ",string)
