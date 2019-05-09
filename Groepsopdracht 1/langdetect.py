@@ -1,5 +1,6 @@
 import re
 import operator
+import codecs
 
 def trigram_table(string, limit=0):
     """Calculate trigram frequency table  from string and return it"""
@@ -26,16 +27,16 @@ def trigram_table(string, limit=0):
 def read_trigrams(filename):
     """Read a file containing the trigrams scores and return them as a dictionary"""
     with open(filename, encoding="utf-8") as file:
-        alltext = file.readlines();
+        alltext = file.readlines()
         tuples = dict()
         for line in alltext:
-            tuple = line.split();
+            tuple = line.split()
             tuples[tuple[1]] = int(tuple[0])
         return tuples
 
 def write_trigrams(table, filename):
     """"Write"""
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding="utf-8") as file:
         for line in table.items():
             file.write(str(line[1]) + " " + line[0])
 
