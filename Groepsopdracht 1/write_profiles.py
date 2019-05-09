@@ -13,12 +13,11 @@ def make_profiles(datafolder="./training", profilefolder="./trigram-models", siz
         name = fileName.split("-")
         language = name[0]
         enc = name[1]
+        print("We gaan nu proberen iets te doen")
         with open(fileName, encoding=enc) as file :
             table = trigram_table(fileName.read(), size)
             write_trigrams(table,language+"."+str(size))
 
-def __main__(self,args):
+if __name__ == "__write_profiles__" :
     make_profiles()
 
-if __name__ == "__write_profiles__" :
-    main()
