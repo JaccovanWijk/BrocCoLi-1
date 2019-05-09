@@ -32,4 +32,4 @@ class LangMatcher:
             return self.score(file.read(), ngrams=ngrams)
 
 app = LangMatcher("./trigram-models")
-print(app.recognize("./training/Bambara-UTF8"))
+print(app.recognize("austen-emma.txt"))
