@@ -32,5 +32,5 @@ class LangMatcher:
             return self.score(file.read(), ngrams=ngrams)
 
 app = LangMatcher("./trigram-models")
-print(app.recognize("austem-emma"))
+print(app.recognize("austen-emma.txt"))
 
