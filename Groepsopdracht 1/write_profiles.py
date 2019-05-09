@@ -1,6 +1,5 @@
-from langdetect1 import *
+from langdetect import *
 import os
-
 
 def make_profiles(datafolder="./training", profilefolder="./trigram-models", size = 200):
 
@@ -13,11 +12,8 @@ def make_profiles(datafolder="./training", profilefolder="./trigram-models", siz
         name = fileName.split("-")
         language = name[0]
         enc = name[1]
-        print("We gaan nu proberen iets te doen")
-        with open(fileName, encoding=enc) as file :
-            table = trigram_table(fileName.read(), size)
-            write_trigrams(table,language+"."+str(size))
+        with open(datafolder+"/"+fileName, encoding=enc) as file :
+            table = trigram_table(file.read(), size)
+            write_trigrams(table,profilefolder+"/"+language+"."+str(size))
 
-if __name__ == "__write_profiles__" :
-    print("Hallo")
-    make_profiles()
+make_profiles()
