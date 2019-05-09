@@ -27,7 +27,7 @@ def read_table():
     """Read table:)"""
     print(2)
 
-def write_table():
+def write_table(table, filename):
     """"Write"""
     print(3)
 
