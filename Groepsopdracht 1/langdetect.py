@@ -1,5 +1,5 @@
 import re
-import collections
+import operator
 
 def trigram_table(string, limit):
     """Calculate trigram frequency table  from string and return it"""
