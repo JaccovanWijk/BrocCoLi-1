@@ -16,4 +16,5 @@ def make_profiles(datafolder="./training", profilefolder="./trigram-models", siz
             table = trigram_table(file.read(), size)
             write_trigrams(table,profilefolder+"/"+language+"."+str(size))
 
-make_profiles()
+if __name__ == "__main__":
+    make_profiles()
