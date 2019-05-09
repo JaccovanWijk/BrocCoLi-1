@@ -18,3 +18,4 @@ def make_profiles(datafolder="./training", profilefolder="./trigram-models", siz
 
 if __name__ == "__main__":
     make_profiles()
+
