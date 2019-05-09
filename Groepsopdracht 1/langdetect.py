@@ -18,8 +18,8 @@ def trigram_table(string, limit):
                 tokens[gram] = 1
             else:
                 tokens[gram] += 1
-    tokens = sorted(tokens.items(), key=lambda kv: kv[1])
-    return collections.OrderedDict(tokens)[:limit]
+
+    return dict(sorted(tokens.iteritems(), key=operator.itemgetter(1), reverse=True)[:limit])
 
 def read_table():
     """Read table:)"""
