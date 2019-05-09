@@ -1,7 +1,7 @@
 import re
 import operator
 
-def trigram_table(string, limit):
+def trigram_table(string, limit=0):
     """Calculate trigram frequency table  from string and return it"""
     newstring = prepare(string)
 
