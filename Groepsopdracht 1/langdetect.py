@@ -27,10 +27,10 @@ def trigram_table(string, limit=0):
 def read_trigrams(filename):
     """Read a file containing the trigrams scores and return them as a dictionary"""
     with open(filename, encoding="utf-8") as file:
-        alltext = file.readlines();
+        alltext = file.readlines()
         tuples = dict()
         for line in alltext:
-            tuple = line.split();
+            tuple = line.split()
             tuples[tuple[1]] = int(tuple[0])
         return tuples
 
