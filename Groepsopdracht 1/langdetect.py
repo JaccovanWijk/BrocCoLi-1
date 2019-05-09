@@ -23,7 +23,7 @@ def trigram_table(string, limit=0):
     else :
         return dict(sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit])
 
-def read_table(filename):
+def read_trigrams(filename):
     """Read a file containing the trigrams scores and return them as a dictionary"""
     with open(filename, encoding="utf-8") as file:
         alltext = file.readlines();
@@ -33,11 +33,11 @@ def read_table(filename):
             tuples[tuple[1]] = int(tuple[0])
         return tuples
 
-def write_table(table, filename):
+def write_trigrams(table, filename):
     """"Write"""
     with open(filename, 'w') as file:
         for line in table.items():
-            file.write(line.value + " " + line.key)
+            file.write(str(line[1]) + " " + line[0])
 
 def cosine_similarity(table1, table2):
     """Return cosine between two frequency tables"""
