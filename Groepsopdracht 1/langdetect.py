@@ -41,7 +41,7 @@ def write_table(table, filename):
 
 def cosine_similarity(table1, table2):
     """Return cosine between two frequency tables"""
-    print(4)
+    
 
 def prepare(string):
     string = re.sub(r"[!? .,\"<>()]"," ",string)
