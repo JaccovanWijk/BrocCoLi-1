@@ -33,14 +33,8 @@ def cosine_similarity(table1, table2):
     print(4)
 
 def prepare(string):
-    # Delete last character if it's a wrong one (to help the split function)
-    characters = ['!','?',',','.','"','(',')','<','>']
-    if string[-1] in characters:
-        string = string[:-1]
-    if string[0] in characters:
-        string = string[1:]
-
-    newstring = re.split('[!/?,.()<>" ]+', string)  #DEZE NEEMT DE ! AAN T EINDE VAN DE ZIN ALS LEEG WOORD
+    string = re.sub(r"[!? .,\"<>()]"," ",string)
+    newstring = string.split()
     return newstring
 
 def trigrams(string):
