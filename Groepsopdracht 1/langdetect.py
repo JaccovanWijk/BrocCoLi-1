@@ -17,8 +17,7 @@ def trigram_table(string, limit):
                 tokens[gram] = 1
             else:
                 tokens[gram] += 1
-
-    return tokens
+    return sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit]
 
 def read_table():
     """Read table:)"""
