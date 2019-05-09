@@ -19,5 +19,6 @@ def make_profiles(datafolder="./training", profilefolder="./trigram-models", siz
             write_trigrams(table,language+"."+str(size))
 
 if __name__ == "__write_profiles__" :
+    print("Hallo")
     make_profiles()
 
