@@ -1,4 +1,5 @@
 import re
+import collections
 
 def trigram_table(string, limit):
     """Calculate trigram frequency table  from string and return it"""
@@ -17,7 +18,8 @@ def trigram_table(string, limit):
                 tokens[gram] = 1
             else:
                 tokens[gram] += 1
-    return sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit]
+    tokens = sorted(tokens.items(), key=lambda kv: kv[1])
+    return collections.OrderedDict(sorted_x)[:limit]
 
 def read_table():
     """Read table:)"""
