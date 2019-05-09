@@ -29,7 +29,9 @@ def read_table():
 
 def write_table(table, filename):
     """"Write"""
-    print(3)
+    with open(filename, 'w') as file:
+        for line in table.items():
+            file.write(line.value + " " + line.key)
 
 def cosine_similarity(table1, table2):
     """Return cosine between two frequency tables"""
