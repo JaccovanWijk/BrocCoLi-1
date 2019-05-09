@@ -36,9 +36,9 @@ def read_trigrams(filename):
 
 def write_trigrams(table, filename):
     """"Write"""
-    with open(filename, 'w') as file:
+    with open(filename, 'w', encoding="utf-8") as file:
         for line in table.items():
-            file.write(str(line[1]) + " " + line[0])
+            file.write(str(line[1]) + " " + line[0] + "\n")
 
 def cosine_similarity(table1, table2):
     """Return cosine between two frequency tables"""
