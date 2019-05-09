@@ -1,6 +1,6 @@
 import re
 import operator
-import codecs
+import math
 
 def trigram_table(string, limit=0):
     """Calculate trigram frequency table  from string and return it"""
@@ -36,13 +36,18 @@ def read_trigrams(filename):
 
 def write_trigrams(table, filename):
     """"Write"""
-    with open(filename, 'w', encoding="utf-8") as file:
+    with open(filename, 'w') as file:
         for line in table.items():
             file.write(str(line[1]) + " " + line[0])
 
 def cosine_similarity(table1, table2):
     """Return cosine between two frequency tables"""
-    print(4)
+    dotproduct = 0
+    for key in table1.keys():
+        if key in table2.keys():
+            dotproduct += table1[key] * table2[key]
+    magnitudes = math.sqrt(sum([x*x for x in table1.values()])) * math.sqrt(sum([x*x for x in table2.values()]))
+    return dotproduct / magnitudes
 
 def prepare(string):
     string = re.sub(r"[!? .,\"<>()]"," ",string)
