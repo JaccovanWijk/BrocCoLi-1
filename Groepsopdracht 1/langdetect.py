@@ -23,9 +23,15 @@ def trigram_table(string, limit):
     else :
         return dict(sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit])
 
-def read_table():
-    """Read table:)"""
-    print(2)
+def read_table(filename):
+    """Read a file containing the trigrams scores and return them as a dictionary"""
+    with open(filename, encoding="utf-8") as file:
+        alltext = file.readlines();
+        tuples = dict()
+        for line in alltext:
+            tuple = line.split();
+            tuples[tuple[1]] = int(tuple[0])
+        return tuples
 
 def write_table(table, filename):
     """"Write"""
