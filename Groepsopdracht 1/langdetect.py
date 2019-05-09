@@ -46,7 +46,7 @@ def cosine_similarity(table1, table2):
     for key in table1.keys():
         if key in table2.keys():
             dotproduct += table1[key] * table2[key]
-    magnitudes = math.sqrt(sum([x*x for x in table1])) * math.sqrt(sum([x*x for x in table2]))
+    magnitudes = math.sqrt(sum([x*x for x in table1.values()])) * math.sqrt(sum([x*x for x in table2.values()]))
     return dotproduct / magnitudes
 
 def prepare(string):
