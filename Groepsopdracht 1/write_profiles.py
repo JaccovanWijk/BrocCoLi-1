@@ -1,4 +1,4 @@
-from langdetect import *
+from langdetect1 import *
 import os
 
 
@@ -21,4 +21,3 @@ def make_profiles(datafolder="./training", profilefolder="./trigram-models", siz
 if __name__ == "__write_profiles__" :
     print("Hallo")
     make_profiles()
-
