@@ -33,4 +33,3 @@ class LangMatcher:
 
 app = LangMatcher("./trigram-models")
 print(app.recognize("austen-emma.txt"))
-
