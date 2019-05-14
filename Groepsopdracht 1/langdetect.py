@@ -2,16 +2,16 @@ import re
 import operator
 import math
 
-def trigram_table(string, limit=0):
-    """Calculate trigram frequency table  from string and return it"""
-    newstring = prepare(string)
+def trigram_table(text, limit=0):
+    """Calculate trigram frequency table from string and return it"""
+    newstring = prepare(text)
 
     # Give every word a < and >
     for i, word in enumerate(newstring):
         newstring[i] = '<' + word + '>'
 
     # Make dict and count all tokens
-    tokens = {}
+    tokens = dict()
     for word in newstring:
         trigram = trigrams(word)
         for gram in trigram:
@@ -19,8 +19,11 @@ def trigram_table(string, limit=0):
                 tokens[gram] = 1
             else:
                 tokens[gram] += 1
-    if limit < 1 :
+
+    # If the limit is 0, return everything
+    if limit == 0 :
         return dict(sorted(tokens.items(), key=operator.itemgetter(1), reverse=True))
+    # Else, return the list upto the limit
     else :
         return dict(sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit])
 
@@ -35,29 +38,35 @@ def read_trigrams(filename):
         return tuples
 
 def write_trigrams(table, filename):
-    """"Write"""
+    """"Write a trigram table to the specified file"""
     with open(filename, 'w', encoding="utf-8") as file:
         for line in table.items():
             file.write(str(line[1]) + " " + line[0] + "\n")
 
-def cosine_similarity(table1, table2):
-    """Return cosine between two frequency tables"""
+def cosine_similarity(known, unknown):
+    """Return cosine-similarity between two frequency tables"""
     dotproduct = 0
-    for key in table1.keys():
-        if key in table2.keys():
-            dotproduct += table1[key] * table2[key]
-    magnitudes = math.sqrt(sum([x*x for x in table1.values()])) * math.sqrt(sum([x*x for x in table2.values()]))
+    for key in known.keys():
+        if key in unknown.keys():
+            dotproduct += known[key] * unknown[key]
+    magnitudes = math.sqrt(sum([x*x for x in known.values()])) * math.sqrt(sum([x*x for x in unknown.values()]))
     return dotproduct / magnitudes
 
-def prepare(string):
-    string = re.sub(r"[!? .,\"<>()]"," ",string)
-    newstring = string.split()
+def prepare(text):
+    """Takes in a string.
+    Replaces the following characters with spaces: !?",.()<>
+    Splits the new string on whitespace and returns that list."""
+
+    text = re.sub(r"[!? .,\"<>()]"," ",text)
+    newstring = text.split()
     return newstring
 
-def trigrams(string):
+def trigrams(seq):
+    """Takes in any sequence (i.e. list or string).
+    Return a list of its trigrams"""
     trigram = []
-    length = len(string)
+    length = len(seq)
     for i in range(length):
         if length > i + 2:
-            trigram.append(string[i:i+3])
+            trigram.append(seq[i:i+3])
     return trigram
