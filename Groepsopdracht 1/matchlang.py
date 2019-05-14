@@ -4,6 +4,7 @@ import sys
 
 
 class LangMatcher:
+    """A class that can guess the language of a specified file based on trigram data"""
 
     def __init__(self, path):
 
@@ -36,6 +37,9 @@ class LangMatcher:
 
 
 def main():
+    """When run as the main program, this script will read all the files in the commandline arguments.
+    Then, it will try to guess the language of aforementioned files. It prints its guesses incl. scores"""
+
     args = sys.argv[1:]  # Get the commandline arguments
     enc = "utf-8"  # Set the default encoding to utf-8
 
@@ -64,6 +68,7 @@ def main():
             scores = lm.score(text)
             score = scores.popitem()
             print("We think the language of file", file.name, "is", score[0], "with a score of", round(score[1], 4))
+
 
 if __name__ == "__main__":
     main()

@@ -1,26 +1,11 @@
 import os
-import sys
 import matchlang as ml
 
 
-def eval(path, lm=None, trigrammodels="./trigram-models", ngrams=200, rounding=4):
+def eval(path, languages, lm=None, trigrammodels="./trigram-models", ngrams=200, rounding=4):
     """This function prints the evaluation of the files in the path specified, when matched with a language"""
 
     print("We are now going to evaluate the files in the specified path " + path)
-
-    # Create the initial language dictionary and fill it
-    languages = dict()
-    languages["da"] = "Danish"
-    languages["de"] = "German"
-    languages["el"] = "Greek"
-    languages["en"] = "English"
-    languages["es"] = "Spanish"
-    languages["fi"] = "Finnish"
-    languages["fr"] = "French"
-    languages["it"] = "Italian"
-    languages["nl"] = "Dutch"
-    languages["pt"] = "Portuguese"
-    languages["sv"] = "Swedish"
 
     path = "./test-clean/" + path  # Correct the default path
     filepaths = os.listdir(path)  # List all the actual file paths
@@ -57,10 +42,26 @@ def eval(path, lm=None, trigrammodels="./trigram-models", ngrams=200, rounding=4
 
 def main():
 
-    lm = ml.LangMatcher("./trigram-models") # Create a langmatcher to use for every
-    eval("europarl-90", lm=lm)
-    eval("europarl-30", lm=lm)
-    eval("europarl-10", lm=lm)
+    lm = ml.LangMatcher("./trigram-models")  # Create a LangMatcher to use for every evaluation
+
+    # Create the initial language dictionary and fill it
+    languages = dict()
+    languages["da"] = "Danish"
+    languages["de"] = "German"
+    languages["el"] = "Greek"
+    languages["en"] = "English"
+    languages["es"] = "Spanish"
+    languages["fi"] = "Finnish"
+    languages["fr"] = "French"
+    languages["it"] = "Italian"
+    languages["nl"] = "Dutch"
+    languages["pt"] = "Portuguese"
+    languages["sv"] = "Swedish"
+
+    eval("europarl-90", languages, lm=lm)
+    eval("europarl-30", languages, lm=lm)
+    eval("europarl-10", languages, lm=lm)
+
 
 if __name__ == "__main__":
     main()
