@@ -17,12 +17,15 @@ def eval(path, languages, lm=None, trigrammodels="./trigram-models", ngrams=200,
     else:
         langmatcher = lm
 
+    # Keep score!
     correct = 0
     incorrect = 0
 
     # Iterate trough all files and score them
     for filepath in filepaths:
+
         with open(path + "/" + filepath, encoding="utf-8") as file:
+
             text = file.read()
             score = langmatcher.score(text, ngrams=ngrams).popitem()  # Guess which language it is
             actuallanguage = languages[filepath[-2:]]  # The actual language, defined by the file extension
@@ -37,7 +40,7 @@ def eval(path, languages, lm=None, trigrammodels="./trigram-models", ngrams=200,
             print(filepath, "-", score[0], "with a score of", round(score[1], rounding), message)
 
     print("Correct :", correct, "/", correct+incorrect, ". Incorrect :", incorrect, "/", correct+incorrect)
-    print()
+    print()  # Print an empty line in the console for better readability
 
 
 def main():
