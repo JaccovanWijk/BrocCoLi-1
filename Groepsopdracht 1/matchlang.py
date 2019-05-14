@@ -48,7 +48,7 @@ def main():
         i = args.index("-e")
 
         # Catch the error that the specified encoding can be empty
-        if len(args) >= i+1:
+        if len(args) <= i+1:
             print("You specified an empty / no encoding. We will use utf-8 instead if that's okay with you.")
         elif args[i+1].strip() == "" or args[i+1] is None:
             print("You specified an empty / no encoding. We will use utf-8 instead if that's okay with you.")
