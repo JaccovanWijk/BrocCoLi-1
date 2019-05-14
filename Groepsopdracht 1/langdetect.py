@@ -2,6 +2,7 @@ import re
 import operator
 import math
 
+
 def trigram_table(text, limit=0):
     """Calculate trigram frequency table from string and return it"""
     newstring = prepare(text)
@@ -27,6 +28,7 @@ def trigram_table(text, limit=0):
     else :
         return dict(sorted(tokens.items(), key=operator.itemgetter(1), reverse=True)[:limit])
 
+
 def read_trigrams(filename):
     """Read a file containing the trigrams scores and return them as a dictionary"""
     with open(filename, encoding="utf-8") as file:
@@ -37,11 +39,13 @@ def read_trigrams(filename):
             tuples[tuple[1]] = int(tuple[0])
         return tuples
 
+
 def write_trigrams(table, filename):
     """"Write a trigram table to the specified file"""
     with open(filename, 'w', encoding="utf-8") as file:
         for line in table.items():
             file.write(str(line[1]) + " " + line[0] + "\n")
+
 
 def cosine_similarity(known, unknown):
     """Return cosine-similarity between two frequency tables"""
@@ -52,6 +56,7 @@ def cosine_similarity(known, unknown):
     magnitudes = math.sqrt(sum([x*x for x in known.values()])) * math.sqrt(sum([x*x for x in unknown.values()]))
     return dotproduct / magnitudes
 
+
 def prepare(text):
     """Takes in a string.
     Replaces the following characters with spaces: !?",.()<>
@@ -60,6 +65,7 @@ def prepare(text):
     text = re.sub(r"[!? .,\"<>()]"," ",text)
     newstring = text.split()
     return newstring
+
 
 def trigrams(seq):
     """Takes in any sequence (i.e. list or string).
