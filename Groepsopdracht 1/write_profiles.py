@@ -4,7 +4,7 @@ import os
 
 def make_profiles(datafolder="./training", profilefolder="./trigram-models", size=200):
 
-    # Create the folder, if it doens't exist
+    # Create the folder, if it doesn't exist
     if not os.path.exists(profilefolder):
         os.makedirs(profilefolder)
 
