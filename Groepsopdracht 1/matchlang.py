@@ -37,8 +37,9 @@ class LangMatcher:
 
 
 def main():
-    """When run as the main program, this script will read all the files in the commandline arguments.
-    Then, it will try to guess the language of aforementioned files. It prints its guesses incl. scores"""
+    """When run as the main program, this script will read all the files
+    in the commandline arguments. Then, it will try to guess the language of
+    aforementioned files. It prints its guesses incl. scores"""
 
     args = sys.argv[1:]  # Get the commandline arguments
     enc = "utf-8"  # Set the default encoding to utf-8
@@ -49,9 +50,11 @@ def main():
 
         # Catch the error that the specified encoding can be empty
         if len(args) <= i+1:
-            print("You specified an empty / no encoding. We will use utf-8 instead if that's okay with you.")
+            print("You specified an empty / no encoding. We will use utf-8" +
+            " instead if that's okay with you.")
         elif args[i+1].strip() == "" or args[i+1] is None:
-            print("You specified an empty / no encoding. We will use utf-8 instead if that's okay with you.")
+            print("You specified an empty / no encoding. We will use utf-8" +
+            " instead if that's okay with you.")
             args.remove(enc)
         else:
             enc = args[i + 1]
@@ -72,5 +75,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

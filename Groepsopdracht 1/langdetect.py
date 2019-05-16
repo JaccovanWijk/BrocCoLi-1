@@ -56,7 +56,8 @@ def write_trigrams(table, filename):
         return
 
     if not isinstance(table, dict) or len(table) == 0:
-        print("Error : The table provided is invalid. It's either an empty dictionary or not a dictionary a all.")
+        print("Error : The table provided is invalid. It's either an " +
+        "empty dictionary or not a dictionary a all.")
         return
 
     # Write the trigram table to the specified filename
